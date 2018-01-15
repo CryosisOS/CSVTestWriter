@@ -82,5 +82,7 @@ public class LoadFile
         return status;
     }//END getStatus
     
+    //DOING METHODS_____FORMAT THIS LINE!!!//
+    
     
 }//END class LoadFile
