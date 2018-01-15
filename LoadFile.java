@@ -17,20 +17,34 @@ public class LoadFile
     private boolean status;
     
     /*DEFAULT CONSTRUCTOR */
-    public LoadFile()
+    public LoadFile() throws IOException
     {
         loadedFile = null;
-        setStatus();
+        try
+        {
+            setStatus();
+        }//END TRY
+        catch(IOException ioex)
+        {
+            throw ioex;
+        }//END CATCH
     }//END DEFAULT CONSTRUCTOR
     
     /**
      * ALTERNATE CONSTRUCTOR
      * IMPORTS: File inFile
      */
-    public LoadFile(String inFileName)
+    public LoadFile(String inFileName) throws IOException
     {
-        setLoadedFile(inFileName);
-        setStatus();
+        try
+        {
+            setLoadedFile(inFileName);
+            setStatus();
+        }//END TRY
+        catch(IOException ioex)
+        {
+            throw ioex;
+        }//END CATCH
     }//END ALTERNATE CONSTRUCTOR
     
     public void setLoadedFile(String inFileName) throws IOException
