@@ -111,4 +111,33 @@ public class ModifyFile
             throw ioex;
         }//END CATCH
     }//END setFileStatus
+    
+    public boolean getFileStatus()
+    {
+        return fileStatus;
+    }//END getFileStatus
+    
+    private void setModifiedStatus()
+    {
+        modifiedStatus = false;
+        try
+        {
+            if(modifiedFile != null)
+            {
+                modifiedStatus = true;
+            }//END IF
+        }//END TRY
+        catch(IOException ioex)
+        {
+            throw ioex;
+        }//END CATCH
+    }//END setModifiedStatus
+    
+    public boolean getModifiedStatus()
+    {
+        return modifiedStatus;
+    }//END getModifiedStatus
+    
+    //PUBLIC DO-ING METHODS____FORMAT HERE//
+    
 }//END class ModifyFile
