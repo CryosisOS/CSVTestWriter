@@ -6,6 +6,9 @@
  * Description: This source code is used to modify the file with the generated fields.
  */
 
+//IMPORTS
+import java.io.IOException;
+
 public class ModifyFile
 {
     private File fileToModify;
@@ -40,4 +43,72 @@ public class ModifyFile
         setFileStatus();
         setModifiedStatus();
     }//END ALTERNATE CONSTRUCTOR
+    
+    public void setFileToModify(File inFile) throws IOException
+    {
+        try
+        {
+            fileToModify = inFile;
+        }//END TRY
+        catch(IOException ioex)
+        {
+            throw ioex;
+        }//END CATCH
+    }//END setFileToModify
+    
+    public File getFileToModify() throws IOException
+    {
+        File copyFile;
+        try
+        {
+            copyFile = fileToModify;
+        }//END TRY
+        catch(IOException ioex)
+        {
+            throw ioex;
+        }//END CATCH
+        return copyFile;
+    }//END getFileToModify
+    
+    public void setModifiedFile(File inFile) throws IOException
+    {
+        try
+        {
+            modifedFile = inFile;
+        }//END TRY
+        catch(IOException ioex)
+        {
+            throw ioex;
+        }//END CATCH
+    }//END setModifiedFile
+    
+    public File getModifiedFile() throws IOException
+    {
+        File outFile;
+        try
+        {
+            outFile = modifiedFile;
+        }//END TRY
+        catch(IOException ioex)
+        {
+            throw ioex;
+        }//END CATCH
+        return outFile;
+    }//END getModifiedFile
+    
+    private void setFileStatus() throws IOException
+    {
+        fileStatus = false;
+        try
+        {
+            if(fileToModify != null)
+            {
+                fileStatus = true;
+            }//END IF
+        }//END TRY
+        catch(IOException ioex)
+        {
+            throw ioex;
+        }//END CATCH
+    }//END setFileStatus
 }//END class ModifyFile
