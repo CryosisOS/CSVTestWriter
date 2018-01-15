@@ -27,17 +27,17 @@ public class LoadFile
      * ALTERNATE CONSTRUCTOR
      * IMPORTS: File inFile
      */
-    public LoadFile(File inFile)
+    public LoadFile(String inFileName)
     {
-        setLoadedFile(inFile);
+        setLoadedFile(inFileName);
         setStatus();
     }//END ALTERNATE CONSTRUCTOR
     
-    public void setLoadedFile(File inFile) throws IOException
+    public void setLoadedFile(String inFileName) throws IOException
     {
         try
         {
-            loadedFile = inFile;
+            loadedFile = new File(inFileName);
         }//END TRY
         catch(IOException ioex)
         {
@@ -80,9 +80,5 @@ public class LoadFile
     public boolean getStatus()
     {
         return status;
-    }//END getStatus
-    
-    //DOING METHODS_____FORMAT THIS LINE!!!//
-    
-    
+    }//END getStatus    
 }//END class LoadFile
