@@ -94,5 +94,5 @@ public class LoadFile
     public boolean getStatus()
     {
         return status;
-    }//END getStatus    
+    }//END getStatus
 }//END class LoadFile

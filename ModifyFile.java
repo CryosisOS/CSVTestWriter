@@ -11,6 +11,7 @@ import java.io.IOException;
 
 public class ModifyFile
 {
+    //CLASS FIELDS
     private File fileToModify;
     private File modifiedFile;
     private boolean fileStatus;
@@ -138,6 +139,18 @@ public class ModifyFile
         return modifiedStatus;
     }//END getModifiedStatus
     
-    //PUBLIC DO-ING METHODS____FORMAT HERE//
-    
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+    // PUBLIC DOING METHODS //
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+
+    public static modFile()
+    {
+        /// DECLERATION OF VARIABLES
+        String [] contentToModify;
+
+
+        /// DEFINEMENT OF METHOD
+        contentToModify = ReadFile.getContent();
+
+    }//END modFile
 }//END class ModifyFile
