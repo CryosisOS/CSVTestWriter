@@ -5,4 +5,4 @@ This is a program that just reads in a csv file with blank fields and fills them
 variables.
 
 #Developers:
- - CryosisOS
+ - CryosisOS (Main Developer)
