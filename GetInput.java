@@ -6,16 +6,19 @@
  * Description: This source code handles the responsibility of getting input from the keyboard.
  */
 
+//IMPORTS
 import java.util.Scanner;
 import java.lang.IllegalStateException;
 
+import static java.lang.System.out;
+
 public class GetInput
 {
-    public static String getString(String prompt);
+    public static String getString(String prompt)
     {
         /// DECLERATION OF VARIABLES
         boolean repeat = true;
-        String input;
+        String input = null;
         Scanner sc = new Scanner(System.in);
 
         /// DEFINEMENT OF METHOD
@@ -25,7 +28,6 @@ public class GetInput
             {
                 repeat = true;
                 out.print(prompt);
-                sc.reset();
                 input = sc.nextLine();
                 repeat = false;
             }//END TRY

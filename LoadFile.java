@@ -10,6 +10,7 @@
 //IMPORTS
 import java.io.File;
 import java.io.IOException;
+import java.io.FileNotFoundException;
 
 public class LoadFile
 {
@@ -20,14 +21,7 @@ public class LoadFile
     public LoadFile() throws IOException
     {
         loadedFile = null;
-        try
-        {
-            setStatus();
-        }//END TRY
-        catch(IOException ioex)
-        {
-            throw ioex;
-        }//END CATCH
+        setStatus();
     }//END DEFAULT CONSTRUCTOR
     
     /**
@@ -36,59 +30,31 @@ public class LoadFile
      */
     public LoadFile(String inFileName) throws IOException
     {
-        try
-        {
-            setLoadedFile(inFileName);
-            setStatus();
-        }//END TRY
-        catch(IOException ioex)
-        {
-            throw ioex;
-        }//END CATCH
+        setLoadedFile(inFileName);
+        setStatus();
     }//END ALTERNATE CONSTRUCTOR
     
-    public void setLoadedFile(String inFileName) throws IOException
+    public void setLoadedFile(String inFileName)
     {
-        try
-        {
-            loadedFile = new File(inFileName);
-        }//END TRY
-        catch(IOException ioex)
-        {
-            throw ioex;
-        }//END CATCH
+        loadedFile = new File(inFileName);
     }//END setLoadedFile
     
-    public File getLoadedFile() throws IOException
+    public File getLoadedFile()
     {
         File outFile;
-        try
-        {
-            outFile = loadedFile;
-        }//END TRY
-        catch(IOException ioex)
-        {
-            throw ioex;
-        }//END CATCH
+        outFile = loadedFile;
         return outFile;
     }//END getLoadedFile
     
-    private void setStatus() throws IOException
+    private void setStatus()
     {
         File file;
         status = false;
-        try
+        file = getLoadedFile();
+        if(file==null)
         {
-            file = getLoadedFile();
-            if(file==null)
-            {
-               status = true; 
-            }//ENDIF
-        }//END TRY
-        catch(IOException ioex)
-        {
-            throw ioex;
-        }//END CATCH
+            status = true; 
+        }//ENDIF
     }//END setStatus
     
     public boolean getStatus()

@@ -20,12 +20,12 @@ public class ReadFile
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
     // PUBLIC DOING METHODS //
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-    public static String [] getContent(FIle inFile)
+    public static String [] getContent(File inFile)
     {
         /// DECLERATION OF VARIABLES
         int arrSze;
         String line;
-        String [] contentArr;
+        String [] contentArr = null;
         FileInputStream fileStream = null;
         InputStreamReader rdr;
         BufferedReader bufRdr;
@@ -40,7 +40,7 @@ public class ReadFile
             arrSze = getNumLines(inFile);
             contentArr = new String [arrSze -1];
 
-            for(int ii = 0;ii<=contentArr.length()-1;ii++)
+            for(int ii = 0;ii<=contentArr.length -1;ii++)
             {
                 line = bufRdr.readLine();
                 contentArr[ii] = line;
@@ -74,7 +74,7 @@ public class ReadFile
     private static int getNumLines(File inFile)
     {
         /// DECLERATION OF VARIABLES
-        int numLines;
+        int numLines = 0;
         String line;
         FileInputStream fileStream = null;
         InputStreamReader rdr;

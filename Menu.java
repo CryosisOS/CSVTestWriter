@@ -9,6 +9,8 @@
 
 
 //IMPORTS
+import java.io.IOException;
+
 import static java.lang.System.out;
 
 public class Menu
@@ -34,7 +36,9 @@ public class Menu
                 if(inFile.getStatus()==true)
                 {
                     modFile = new ModifyFile(inFile.getLoadedFile());
+                    modFile.modFile();
                 }//ENDIF
+                repeat = false;
             }//END TRY
             catch(IOException ioex)
             {

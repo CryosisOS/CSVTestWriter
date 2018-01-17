@@ -8,109 +8,66 @@
 
 //IMPORTS
 import java.io.IOException;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+import java.io.File;
 
 public class ModifyFile
 {
     //CLASS FIELDS
     private File fileToModify;
-    private File modifiedFile;
     private boolean fileStatus;
-    private boolean modifiedStatus;
     
     /*DEFAULT CONSTRUCTOR*/
-    public ModifyFile()
+    public ModifyFile() throws IOException
     {
         fileToModify = null;
-        modifiedFile = null;
-        setFileStatus();
-        setModifiedStatus();
+        try
+        {
+            setFileStatus();
+        }//END TRY
+        catch(IOException ioex)
+        {
+            throw ioex;
+        }//END CATCH
     }//END DEFAULT CONSTRUCTOR
     
     /**
      * ALTERNATE CONSTRUCTOR
      * IMPORTS: File inFileToModify
      */
-    public ModifiyFile(File inFileToModify) throws IOException
+    public ModifyFile(File inFileToModify) throws IOException
     {
         try
         {
             setFileToModify(inFileToModify);
-            modifiedFile = null;
-        }//END TRY
-        catch(IOException ioex)
-        {
-            throw ioex
-        }//END CATCH
-        setFileStatus();
-        setModifiedStatus();
-    }//END ALTERNATE CONSTRUCTOR
-    
-    public void setFileToModify(File inFile) throws IOException
-    {
-        try
-        {
-            fileToModify = inFile;
+            setFileStatus();    
         }//END TRY
         catch(IOException ioex)
         {
             throw ioex;
         }//END CATCH
+    }//END ALTERNATE CONSTRUCTOR
+    
+    public void setFileToModify(File inFile)
+    {
+        fileToModify = inFile;
     }//END setFileToModify
     
     public File getFileToModify() throws IOException
     {
         File copyFile;
-        try
-        {
-            copyFile = fileToModify;
-        }//END TRY
-        catch(IOException ioex)
-        {
-            throw ioex;
-        }//END CATCH
+        copyFile = fileToModify;
         return copyFile;
     }//END getFileToModify
-    
-    public void setModifiedFile(File inFile) throws IOException
-    {
-        try
-        {
-            modifedFile = inFile;
-        }//END TRY
-        catch(IOException ioex)
-        {
-            throw ioex;
-        }//END CATCH
-    }//END setModifiedFile
-    
-    public File getModifiedFile() throws IOException
-    {
-        File outFile;
-        try
-        {
-            outFile = modifiedFile;
-        }//END TRY
-        catch(IOException ioex)
-        {
-            throw ioex;
-        }//END CATCH
-        return outFile;
-    }//END getModifiedFile
     
     private void setFileStatus() throws IOException
     {
         fileStatus = false;
-        try
+        if(fileToModify != null)
         {
-            if(fileToModify != null)
-            {
-                fileStatus = true;
-            }//END IF
-        }//END TRY
-        catch(IOException ioex)
-        {
-            throw ioex;
-        }//END CATCH
+            fileStatus = true;
+        }//END IF
     }//END setFileStatus
     
     public boolean getFileStatus()
@@ -118,39 +75,54 @@ public class ModifyFile
         return fileStatus;
     }//END getFileStatus
     
-    private void setModifiedStatus()
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+    // PUBLIC DOING METHODS //
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+
+    public void modFile() throws IOException
     {
-        modifiedStatus = false;
+        /// DECLERATION OF VARIABLES
+        int nameLength = 10;
+        int surnameLength = 30;
+        int numNames, numSurnames;
+        String newFileName;
+        String [] contentToModify;
+        String [][] newContent;
+        String [] names;
+        String [] surnames;
+        StringGenerator nameGen = new StringGenerator(nameLength, ThreadLocalRandom.current());
+        StringGenerator surnameGen = new StringGenerator(surnameLength, ThreadLocalRandom.current());
+
+        /// DEFINEMENT OF METHOD
         try
         {
-            if(modifiedFile != null)
-            {
-                modifiedStatus = true;
-            }//END IF
+            contentToModify = ReadFile.getContent(this.getFileToModify());
         }//END TRY
         catch(IOException ioex)
         {
             throw ioex;
         }//END CATCH
-    }//END setModifiedStatus
-    
-    public boolean getModifiedStatus()
-    {
-        return modifiedStatus;
-    }//END getModifiedStatus
-    
-    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-    // PUBLIC DOING METHODS //
-    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+        numNames = contentToModify.length;
+        numSurnames = contentToModify.length;
+        names = new String[numNames];
+        surnames = new String[numSurnames];
+        newContent = new String[contentToModify.length][contentToModify[0].split(",").length];
 
-    public static modFile()
-    {
-        /// DECLERATION OF VARIABLES
-        String [] contentToModify;
+        for(int ii=0;ii<=numNames -1;ii++)
+        {
+            names[ii] = nameGen.generateName(nameLength);
+            surnames[ii] = surnameGen.generateName(surnameLength);
+        }//END FOR
 
-
-        /// DEFINEMENT OF METHOD
-        contentToModify = ReadFile.getContent();
-
+        for(int ii=0;ii<=contentToModify.length -1;ii++)
+        {
+            newContent[ii] = contentToModify[ii].split(",");
+            newContent[ii][1] = surnames[ii];
+            newContent[ii][2] = names[ii];
+            for(int jj = 0;jj<newContent[0].length;jj++)//FOR TESTING
+            {
+                System.out.println(newContent[ii][jj]);
+            }//ENDFOR
+        }//END FOR
     }//END modFile
 }//END class ModifyFile
