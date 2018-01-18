@@ -2,7 +2,7 @@
  * Author: Nathan van der Velde
  * Date Created: 2018-01-15
  * Last Modified By: Nathan van der Velde
- * Date Last Modified: 2018-01-15
+ * Date Last Modified: 2018-01-18
  * Description: This source code is used to modify the file with the generated fields.
  */
 
@@ -119,10 +119,7 @@ public class ModifyFile
             newContent[ii] = contentToModify[ii].split(",");
             newContent[ii][1] = surnames[ii];
             newContent[ii][2] = names[ii];
-            for(int jj = 0;jj<newContent[0].length;jj++)//FOR TESTING
-            {
-                System.out.println(newContent[ii][jj]);
-            }//ENDFOR
         }//END FOR
+        WriteFile.write(fileToModify, newContent);
     }//END modFile
 }//END class ModifyFile

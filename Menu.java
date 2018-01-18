@@ -2,7 +2,7 @@
  * Author: Nathan van der Velde
  * Date Created: 2018-01-17
  * Last Modified By: Nathan van der Velde
- * Date Last Modified: 2018-01-17
+ * Date Last Modified: 2018-01-18
  * Description: This source code contains the main menu for the program as well as any other 
  *              menu that the program requires.
  */
@@ -33,11 +33,8 @@ public class Menu
             {
                 fileName = GetInput.getString(prompt);
                 inFile = new LoadFile(fileName);
-                if(inFile.getStatus()==true)
-                {
-                    modFile = new ModifyFile(inFile.getLoadedFile());
-                    modFile.modFile();
-                }//ENDIF
+                modFile = new ModifyFile(inFile.getLoadedFile());
+                modFile.modFile();
                 repeat = false;
             }//END TRY
             catch(IOException ioex)
